@@ -12,64 +12,43 @@
 	</style>
 
 	<script type="text/tiscript">
-		self#btn.onClick = function() {
-			this.popup( self#menu, Utils.popupAttachment(9, 7) );
-		};
-	
-		$(#mi-item1).subscribe(function(evt) {
+		event click $(#btn-click)(evt) {
+			this.popup(self#menu, Utils.popupAttachment(9, 7));
+		}
+
+		event contextmenu $(#btn-rclick)(evt) {
+			this.popup(self#menu, Utils.popupAttachment(1, 7));
+		}
+
+		event ~mouseup $(#mi-item1)(evt) {
 			var el_btn = this.$(button);
-			var check = el_btn.state.checked = !el_btn.state.checked;
+			el_btn.state.checked = !el_btn.state.checked;
 			return true;
-		}, Event.MOUSE, Event.MOUSE_UP | Event.SINKING);
-
-
-		//$(.menu-chromed).state.popup = true;
-	
-		/*var el_menu = $(.menu-chromed);
-		el_menu.onMouse = function(evt) {
-			if(evt.type==Event.MOUSE_IDLE)
-			{
-				var el_li = evt.target.$p(.menu-chromed li)
-				log("MOUSE_IDLE", el_li);
-			
-				if(el_li)
-				{
-					var el_subpopup = el_li.$(.sub-menu-chromed);
-					if(el_subpopup)
-					{
-						el_li.popup( el_subpopup, Utils.popupAttachment(9, 7) );
-					}
-				}
-			}
-		};*/
+		}
 	</script>
 </head>
 
 <body>
-	<button #btn>Open</button>
+	<button #btn-click>Click to open - positioned at right</button>
+	<button #btn-rclick>Right-click to open - positioned at bottom</button>
 	
-	<menu .menu-chromed #menu .gambi>
+	<menu .menu-chromed #menu>
 		<div .inner>
-			<caption>A header grouping itens</caption>
+			<caption>
+				A header grouping some itens
+			</caption>
+
 			<ul>
-				<li #mi-item1 disabled>
+				<li #mi-item1>
 					Item 1
 					<button|toggler2><label .true>On</label><label .false>Off</label></button>
 				</li>
 				<li #mi-item2>Item 2</li>
-				<li><i .ft .ft-cog />Fullscreen<accesskey>F11</accesskey></li>
+				<li>Fullscreen<accesskey>F11</accesskey></li>
+				<li><img src="icon-photoshop.svg" width="15" /> Item with icon</li>
+
 				<hr />
-				<li disabled>
-					Sub-menu1
-					<menu .sub-menu-chromed>
-						<div .inner>
-							<ul>
-								<li>Option 1</li>
-								<li>Option 2</li>
-							</ul>
-						</div>
-					</menu>
-				</li>
+
 				<li>
 					Sub-menu1
 					<menu .sub-menu-chromed>
@@ -81,10 +60,29 @@
 						</div>
 					</menu>
 				</li>
+
+				<li disabled>
+					Sub-menu2
+					<menu .sub-menu-chromed>
+						<div .inner>
+							<ul>
+								<li>Option 1</li>
+								<li>Option 2</li>
+							</ul>
+						</div>
+					</menu>
+				</li>
+			</ul>
+
+			<caption>Radios</caption>
+			<ul>
+				<li .radio>Radio 1</li>
+				<li .radio>Radio 2</li>
+				<li .radio>Radio 3</li>
+				<li .radio>Radio 4</li>
 			</ul>
 			
 			<caption>Another header</caption>
-			
 			<ul>
 				<li>Fullscreen<accesskey>F11</accesskey></li>
 			</ul>

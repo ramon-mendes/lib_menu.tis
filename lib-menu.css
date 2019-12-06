@@ -165,7 +165,7 @@
 	}
 	
 	accesskey { display: block; margin-left: *; color: #9e6d85; flow: horizontal; border-spacing: 5px; }
-	hr { border: none; border-top: solid 1px #dddddd; margin: 0; }
+	hr { border: none; border-top: solid 1px #dddddd; margin: 2px 0; }
 	
 	:root:not(.no-caption) caption
 	{
@@ -184,6 +184,7 @@
 		vertical-align: middle;
 		border-spacing: 5px;
 	}
+	caption img { border: solid 1px red;}
 
 	footer
 	{

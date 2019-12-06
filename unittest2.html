@@ -1,49 +1,54 @@
 <!-- OmniView:on -->
 <html>
 
-<style>
-	@import url(../css/fontello/fd-sciter.css);
-	@import url(menu-chrome.css);
+<head>
+	<style>
+		@import url(../css/fontello/fd-sciter.css);
+		@import url(lib-menu.css);
 	
-	body
-	{
-		font-size: 13dip;
-		font-family: system;
-	}
-</style>
-
-<script type="text/tiscript">
-	self#btn.onClick = function() {
-		this.popup( self#menu, Utils.popupAttachment() );
-	};
-	
-	$(#mi-item1).subscribe(function(evt) {
-		var el_btn = this.$(button);
-		var check = el_btn.state.checked = !el_btn.state.checked;
-		return true;
-	}, Event.MOUSE, Event.MOUSE_UP | Event.SINKING);
-
-
-	//$(.menu-chromed).state.popup = true;
-	
-	/*var el_menu = $(.menu-chromed);
-	el_menu.onMouse = function(evt) {
-		if(evt.type==Event.MOUSE_IDLE)
+		body
 		{
-			var el_li = evt.target.$p(.menu-chromed li)
-			log("MOUSE_IDLE", el_li);
-			
-			if(el_li)
+			font-size: 13dip;
+			font-family: system;
+		}
+	</style>
+
+	<script type="text/tiscript">
+		self#btn.onClick = function() {
+			this.popup( self#menu, Utils.popupAttachment() );
+		};
+		
+		$(#mi-item1).subscribe(function(evt) {
+			var el_btn = this.$(button);
+			var check = el_btn.state.checked = !el_btn.state.checked;
+			return true;
+		}, Event.MOUSE, Event.MOUSE_UP | Event.SINKING);
+
+		event eventname(evt) {
+
+		}
+
+		//$(.menu-chromed).state.popup = true;
+	
+		/*var el_menu = $(.menu-chromed);
+		el_menu.onMouse = function(evt) {
+			if(evt.type==Event.MOUSE_IDLE)
 			{
-				var el_subpopup = el_li.$(.sub-menu-chromed);
-				if(el_subpopup)
+				var el_li = evt.target.$p(.menu-chromed li)
+				log("MOUSE_IDLE", el_li);
+			
+				if(el_li)
 				{
-					el_li.popup( el_subpopup, Utils.popupAttachment(9, 7) );
+					var el_subpopup = el_li.$(.sub-menu-chromed);
+					if(el_subpopup)
+					{
+						el_li.popup( el_subpopup, Utils.popupAttachment(9, 7) );
+					}
 				}
 			}
-		}
-	};*/
-</script>
+		};*/
+	</script>
+</head>
 
 <body>
 	<button #btn>Open</button>
