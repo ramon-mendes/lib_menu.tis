@@ -1,0 +1,60 @@
+button[type=toggler2]
+{
+	style-set: "std-toggler";
+	margin-left: *;
+}
+
+@set std-toggler
+{
+	:root
+	{
+		flow: stack;
+		behavior: check;
+		background: window;
+		overflow: hidden;
+		width: max-content;
+		height: 14px;
+		
+		padding: 0;
+		border: 1px solid threedshadow;
+		border-radius: 8px;
+		transition: none;
+
+		foreground-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cdefs%3E%3CradialGradient cx='60' cy='60' r='140' fx='80' fy='80' id='a' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='1' stop-color='threedshadow'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M159.5 79.4a79.6 79.6 0 1 1-159.2 0 79.6 79.6 0 1 1 159.2 0z' transform='matrix%28.87956 0 0 .87954 9.7 10.2%29' fill='url%28%23a%29'/%3E%3C/svg%3E");
+		foreground-size: 1.6em;
+		foreground-repeat: no-repeat;
+		foreground-position: -3% 50%;
+
+		foreground-clip: border-box;
+		font-rendering-mode: classic;
+	}
+
+	:root:checked { foreground-position: 103% 50%; }
+
+	:root > label
+	{
+		display: block;
+		height: *;
+		margin: 0;
+		padding: 0 9px;
+		padding-top: -1px;
+		font-size: 10px;
+		line-height: 14px;
+
+		background: #eee;
+		border: solid 1px;
+		border-left: none;
+		border-right: none;
+		color: #acacac;
+	}
+
+	:root > label.true { border-color: #75acc4; padding-right:2em; background-color:highlight; color: highlighttext; }
+	:root > label.false { border-color: #d5d5d5; padding-left:2em;  }
+
+	:root:checked > label.false { transform: translate(103%,0); }
+	:root:not(:checked) > label.true  { transform: translate(-103%,0); }
+
+	/*do transitions only after behavior assignment - when it is UI operational */
+	:root { transition: foreground-position(linear,200ms); }
+	:root > label { transition: transform(linear,200ms); }
+}

@@ -1,0 +1,98 @@
+<html>
+
+<head>
+	<style>
+		@import url(lib-menu.css);
+	
+		body
+		{
+			font-size: 13dip;
+			font-family: system;
+		}
+	</style>
+
+	<script type="text/tiscript">
+		self#btn.onClick = function() {
+			this.popup( self#menu, Utils.popupAttachment(9, 7) );
+		};
+	
+		$(#mi-item1).subscribe(function(evt) {
+			var el_btn = this.$(button);
+			var check = el_btn.state.checked = !el_btn.state.checked;
+			return true;
+		}, Event.MOUSE, Event.MOUSE_UP | Event.SINKING);
+
+
+		//$(.menu-chromed).state.popup = true;
+	
+		/*var el_menu = $(.menu-chromed);
+		el_menu.onMouse = function(evt) {
+			if(evt.type==Event.MOUSE_IDLE)
+			{
+				var el_li = evt.target.$p(.menu-chromed li)
+				log("MOUSE_IDLE", el_li);
+			
+				if(el_li)
+				{
+					var el_subpopup = el_li.$(.sub-menu-chromed);
+					if(el_subpopup)
+					{
+						el_li.popup( el_subpopup, Utils.popupAttachment(9, 7) );
+					}
+				}
+			}
+		};*/
+	</script>
+</head>
+
+<body>
+	<button #btn>Open</button>
+	
+	<menu .menu-chromed #menu .gambi>
+		<div .inner>
+			<caption>A header grouping itens</caption>
+			<ul>
+				<li #mi-item1 disabled>
+					Item 1
+					<button|toggler2><label .true>On</label><label .false>Off</label></button>
+				</li>
+				<li #mi-item2>Item 2</li>
+				<li><i .ft .ft-cog />Fullscreen<accesskey>F11</accesskey></li>
+				<hr />
+				<li disabled>
+					Sub-menu1
+					<menu .sub-menu-chromed>
+						<div .inner>
+							<ul>
+								<li>Option 1</li>
+								<li>Option 2</li>
+							</ul>
+						</div>
+					</menu>
+				</li>
+				<li>
+					Sub-menu1
+					<menu .sub-menu-chromed>
+						<div .inner>
+							<ul>
+								<li>Option 1</li>
+								<li>Option 2</li>
+							</ul>
+						</div>
+					</menu>
+				</li>
+			</ul>
+			
+			<caption>Another header</caption>
+			
+			<ul>
+				<li>Fullscreen<accesskey>F11</accesskey></li>
+			</ul>
+			
+			<footer>
+				Exit<accesskey>Ctrl+Shift+B</accesskey>
+			</footer>
+		</div>
+	</menu>
+</body>
+</html>
